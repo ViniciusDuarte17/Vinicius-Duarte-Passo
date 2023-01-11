@@ -7,8 +7,7 @@ export class Authenticator implements IAuthenticator {
   public generateToken(input: AuthenticationData): string {
     const token = jwt.sign(
       {
-        id: input.id,
-        role: input.role
+        id: input.id
       },
       process.env.JWT_KEY as string,
       {
