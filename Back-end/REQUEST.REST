@@ -1,0 +1,54 @@
+ // ------- ROTAS PARA CADASTRO E LOGIN DA APLICAÇÃO --------
+POST http://localhost:3000/user/singup
+Content-Type: application/json
+
+{
+    "name": "desafiosharenergy",
+    "email": "desafiosharenergy@gmail.com",
+    "password": "sh@r3n3rgy"
+}
+
+###
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "name": "desafiosharenergy",
+    "password": "sh@r3n3rgy"
+}
+###
+
+// ------- ROTAS CLIENTES --------
+
+GET http://localhost:3000/client
+
+###
+GET http://localhost:3000/client/42ac3871-607f-45cc-b752-83623f93f93a
+
+###
+POST http://localhost:3000/client
+Content-Type: application/json
+
+{
+    "name": "vinicius",
+    "email": "vinicius@gmail.com",
+    "phone": 74999558050,
+    "address": "Rua palmeiras",
+    "cpf":"45678959371"
+}
+###
+
+PATCH http://localhost:3000/client/b9aa3a33-582f-4eda-86dc-0971e812322e
+Content-Type: application/json
+
+{
+    "name": "vinicius2",
+    "email": "vinicius2@gmail.com",
+    "phone": 74999558050,
+    "address": "Rua palmeiras",
+    "cpf":"45678959371"
+}
+###
+
+DELETE http://localhost:3000/client/b9aa3a33-582f-4eda-86dc-0971e812322e
