@@ -31,7 +31,7 @@ export class ClientBusiness {
         await this.clientDabase.createClient(client)
     }
 
-    public async getClient() {
+    public async getClient(): Promise<IClient[]> {
 
         const client = await this.clientDabase.getClient()
 
