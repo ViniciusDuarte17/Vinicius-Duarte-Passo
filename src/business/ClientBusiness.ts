@@ -65,4 +65,19 @@ export class ClientBusiness {
         
         await this.clientDabase.updateClient(id, client)
     }
+
+    public async deleteClient(id: string): Promise<void> {
+
+        if(!id) {
+            throw new BaseError("É necessário passar id no parms da requisição", 422)
+        }
+
+        const client = await this.clientDabase.getClientById(id);
+
+        if(!client) {
+            throw new BaseError("cliente não encontrado", 404);
+        }
+
+        await this.clientDabase.deleteClient(id)
+    }
 }

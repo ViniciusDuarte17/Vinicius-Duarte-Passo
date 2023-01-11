@@ -56,4 +56,16 @@ export class ClientController {
             res.status(error.code).send({ error: error.message });
         }
     }
+
+    async deleteClient(req: Request, res: Response): Promise<void> {
+        try {
+            const id = req.params.id
+
+            await this.clientBusiness.deleteClient(id);
+
+            res.status(200).send({message: "cliente deletado"})
+        } catch (error: any) {
+            res.status(error.code).send({ error: error.message });
+        }
+    }
 }

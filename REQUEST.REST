@@ -46,3 +46,6 @@ Content-Type: application/json
     "address": "Rua palmeiras",
     "cpf":"45678959371"
 }
+###
+
+DELETE http://localhost:3000/client/b9aa3a33-582f-4eda-86dc-0971e812322e
