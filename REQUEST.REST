@@ -24,6 +24,9 @@ Content-Type: application/json
 GET http://localhost:3000/client
 
 ###
+GET http://localhost:3000/client/42ac3871-607f-45cc-b752-83623f93f93a
+
+###
 POST http://localhost:3000/client
 Content-Type: application/json
 

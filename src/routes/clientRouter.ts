@@ -13,7 +13,9 @@ const clientDatabase = new ClientDatabase();
 const clientBusiness = new ClientBusiness(clientDatabase, idGenerator);
 const clientController = new ClientController(clientBusiness);
 
-clientRouter.get("/", (res, req) => clientController.getClient(res,req));
+
 clientRouter.post("/", (res, req) => clientController.createClient(res,req));
+clientRouter.get("/", (res, req) => clientController.getClient(res,req));
+clientRouter.get("/:id", (res, req) => clientController.getClientById(res,req));
 clientRouter.patch("/:id", (res, req) => clientController.uptadeClient(res,req));
 clientRouter.delete("/:id", (res, req) => clientController.deleteClient(res,req));

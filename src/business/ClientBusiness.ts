@@ -35,23 +35,38 @@ export class ClientBusiness {
 
         const client = await this.clientDabase.getClient()
 
-        if(client.length <= 0) {
+        if (client.length <= 0) {
             throw new BaseError("Não tem cliente cadastrado", 404)
         }
 
         return client;
     }
 
-    public async updateClient(id: string, client: IClientDTO): Promise<void> {
-        const {name, email, phone, address, cpf} = client;
+    public async getClientById(id: string): Promise<IClient> {
 
-        if(!id) {
+        if (!id) {
+            throw new BaseError("É necessário passar id no parms da requisição", 422)
+        }
+        
+        const clientdb = await this.clientDabase.getClientById(id)
+
+        if (!clientdb) {
+            throw new BaseError("cliente não encontrado", 404)
+        }
+
+        return clientdb
+    }
+
+    public async updateClient(id: string, client: IClientDTO): Promise<void> {
+        const { name, email, phone, address, cpf } = client;
+
+        if (!id) {
             throw new BaseError("É necessário passar id no parms da requisição", 422)
         }
 
         const clientdb = await this.clientDabase.getClientById(id)
 
-        if(!clientdb){
+        if (!clientdb) {
             throw new BaseError("cliente não encontrado", 404)
         }
 
@@ -68,19 +83,19 @@ export class ClientBusiness {
         if (!name && !email && phone && !address && !cpf) {
             throw new BaseError("Escolha ao menos um valor para editar!", 422);
         }
-        
+
         await this.clientDabase.updateClient(id, client)
     }
 
     public async deleteClient(id: string): Promise<void> {
 
-        if(!id) {
+        if (!id) {
             throw new BaseError("É necessário passar id no parms da requisição", 422)
         }
 
         const client = await this.clientDabase.getClientById(id);
 
-        if(!client) {
+        if (!client) {
             throw new BaseError("cliente não encontrado", 404);
         }
 

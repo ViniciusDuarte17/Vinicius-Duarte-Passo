@@ -37,9 +37,20 @@ export class ClientController {
         }
     }
 
+    async getClientById(req: Request, res: Response) {
+        try {
+            const id = req.params.id;
+            const client = await this.clientBusiness.getClientById(id);
+
+            res.status(200).send(client);
+        } catch (error: any) {
+            res.status(error.code).send({ error: error.message });
+        }
+    }
+
     async uptadeClient(req: Request, res: Response) {
         try {
-            const { name, email, phone, address, cpf} = req.body;
+            const { name, email, phone, address, cpf } = req.body;
             const id = req.params.id;
 
             const client: IClientDTO = {
@@ -50,8 +61,8 @@ export class ClientController {
                 cpf
             }
             await this.clientBusiness.updateClient(id, client)
-            
-            res.status(200).send({message: 'cliente atualizado com sucesso!'})
+
+            res.status(200).send({ message: 'cliente atualizado com sucesso!' })
         } catch (error: any) {
             res.status(error.code).send({ error: error.message });
         }
@@ -63,7 +74,7 @@ export class ClientController {
 
             await this.clientBusiness.deleteClient(id);
 
-            res.status(200).send({message: "cliente deletado"})
+            res.status(200).send({ message: "cliente deletado" })
         } catch (error: any) {
             res.status(error.code).send({ error: error.message });
         }
