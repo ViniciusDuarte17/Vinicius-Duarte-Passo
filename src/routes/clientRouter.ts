@@ -15,3 +15,4 @@ const clientController = new ClientController(clientBusiness);
 
 clientRouter.get("/", (res, req) => clientController.getClient(res,req));
 clientRouter.post("/", (res, req) => clientController.createClient(res,req));
+clientRouter.patch("/:id", (res, req) => clientController.uptadeClient(res,req));

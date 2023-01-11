@@ -41,4 +41,28 @@ export class ClientBusiness {
 
         return client;
     }
+
+    public async updateClient(id: string, client: IClientDTO): Promise<void> {
+        const {name, email, phone, address, cpf} = client;
+
+        if(!id) {
+            throw new BaseError("É necessário passar id no parms da requisição", 422)
+        }
+
+        if (
+            name === '' ||
+            email === '' ||
+            phone === undefined ||
+            address === '' ||
+            cpf === ''
+        ) {
+            throw new BaseError("Nenhum dos campos devem estar em branco.", 422);
+        }
+
+        if (!name && !email && phone && !address && !cpf) {
+            throw new BaseError("Escolha ao menos um valor para editar!", 422);
+        }
+        
+        await this.clientDabase.updateClient(id, client)
+    }
 }

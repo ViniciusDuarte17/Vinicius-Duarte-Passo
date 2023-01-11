@@ -36,4 +36,24 @@ export class ClientController {
             res.status(error.code).send({ error: error.message });
         }
     }
+
+    async uptadeClient(req: Request, res: Response) {
+        try {
+            const { name, email, phone, address, cpf} = req.body;
+            const id = req.params.id;
+
+            const client: IClientDTO = {
+                name,
+                email,
+                phone,
+                address,
+                cpf
+            }
+            await this.clientBusiness.updateClient(id, client)
+            
+            res.status(200).send({message: 'cliente atualizado com sucesso!'})
+        } catch (error: any) {
+            res.status(error.code).send({ error: error.message });
+        }
+    }
 }

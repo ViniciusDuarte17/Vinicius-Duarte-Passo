@@ -1,4 +1,4 @@
-import { Client, IClient } from "../model/client";
+import { Client, IClient, IClientDTO } from "../model/client";
 import { IClientRepository } from "../repository/IClientRepository";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -20,5 +20,10 @@ export class ClientDatabase extends BaseDatabase implements IClientRepository {
         this.getConnection()
         const client: IClient[] = await Client.find();
         return client 
+    }
+
+    public async updateClient(id: string, client: IClientDTO): Promise<void> {
+        this.getConnection()
+        await Client.updateOne({id: id}, client)
     }
 }

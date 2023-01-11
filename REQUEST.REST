@@ -34,3 +34,15 @@ Content-Type: application/json
     "address": "Rua palmeiras",
     "cpf":"45678959371"
 }
+###
+
+PATCH http://localhost:3000/client/b9aa3a33-582f-4eda-86dc-0971e812322e
+Content-Type: application/json
+
+{
+    "name": "vinicius2",
+    "email": "vinicius2@gmail.com",
+    "phone": 74999558050,
+    "address": "Rua palmeiras",
+    "cpf":"45678959371"
+}
