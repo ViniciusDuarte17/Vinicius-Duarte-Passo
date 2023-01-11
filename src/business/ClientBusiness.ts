@@ -49,6 +49,12 @@ export class ClientBusiness {
             throw new BaseError("É necessário passar id no parms da requisição", 422)
         }
 
+        const clientdb = await this.clientDabase.getClientById(id)
+
+        if(!clientdb){
+            throw new BaseError("cliente não encontrado", 404)
+        }
+
         if (
             name === '' ||
             email === '' ||
