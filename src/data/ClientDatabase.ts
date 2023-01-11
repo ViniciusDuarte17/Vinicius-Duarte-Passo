@@ -16,4 +16,9 @@ export class ClientDatabase extends BaseDatabase implements IClientRepository {
         }
     }
 
+    public async getClient(): Promise<IClient[]> {
+        this.getConnection()
+        const client: IClient[] = await Client.find();
+        return client 
+    }
 }

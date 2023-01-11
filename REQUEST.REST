@@ -1,3 +1,4 @@
+ // ------- ROTAS PARA CADASTRO E LOGIN DA APLICAÇÃO --------
 POST http://localhost:3000/user/singup
 Content-Type: application/json
 
@@ -16,6 +17,11 @@ Content-Type: application/json
     "name": "desafiosharenergy",
     "password": "sh@r3n3rgy"
 }
+###
+
+// ------- ROTAS CLIENTES --------
+
+GET http://localhost:3000/client
 
 ###
 POST http://localhost:3000/client

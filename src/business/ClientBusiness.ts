@@ -30,4 +30,15 @@ export class ClientBusiness {
 
         await this.clientDabase.createClient(client)
     }
+
+    public async getClient() {
+
+        const client = await this.clientDabase.getClient()
+
+        if(client.length < 0) {
+            throw new BaseError("Não tem cliente cadastro", 404)
+        }
+
+        return client;
+    }
 }

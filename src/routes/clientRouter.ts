@@ -13,4 +13,5 @@ const clientDatabase = new ClientDatabase();
 const clientBusiness = new ClientBusiness(clientDatabase, idGenerator);
 const clientController = new ClientController(clientBusiness);
 
+clientRouter.get("/", (res, req) => clientController.getClient(res,req));
 clientRouter.post("/", (res, req) => clientController.createClient(res,req));

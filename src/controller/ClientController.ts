@@ -26,4 +26,14 @@ export class ClientController {
             res.status(400).send({ error: error.message });
         }
     }
+
+    async getClient(req: Request, res: Response) {
+        try {
+            const client = await this.clientBusiness.getClient();
+
+            res.status(200).send(client);
+        } catch (error: any) {
+            res.status(error.code).send({ error: error.message });
+        }
+    }
 }
