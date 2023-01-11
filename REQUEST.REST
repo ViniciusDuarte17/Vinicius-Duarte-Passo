@@ -16,3 +16,15 @@ Content-Type: application/json
     "name": "desafiosharenergy",
     "password": "sh@r3n3rgy"
 }
+
+###
+POST http://localhost:3000/client
+Content-Type: application/json
+
+{
+    "name": "vinicius",
+    "email": "vinicius@gmail.com",
+    "phone": 74999558050,
+    "address": "Rua palmeiras",
+    "cpf":"45678959371"
+}
