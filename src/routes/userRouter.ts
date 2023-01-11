@@ -17,3 +17,4 @@ const userBusiness = new UserBusiness(userDatabase,idGenerator, hashManager, aut
 const userController = new UserController(userBusiness);
 
 userRouter.post("/singup", (res, req) => userController.singUp(res,req));
+userRouter.post("/login", (res, req) => userController.login(res,req));

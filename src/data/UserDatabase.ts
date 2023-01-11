@@ -13,4 +13,14 @@ export class UserDatabase extends BaseDatabase implements IUserRepository {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+
+    public async getUserByname(userName: string): Promise<User> {
+        try {
+            this.getConnection()
+            const user = await Users.findOne({ name: userName })
+            return user as User
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

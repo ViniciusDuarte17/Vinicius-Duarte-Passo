@@ -6,3 +6,13 @@ Content-Type: application/json
     "email": "desafiosharenergy@gmail.com",
     "password": "sh@r3n3rgy"
 }
+
+###
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "name": "desafiosharenergy",
+    "password": "sh@r3n3rgy"
+}

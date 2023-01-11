@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { InputDTO } from "../model/user";
+import { InputDTO, userLogin } from "../model/user";
 
 
 export class UserController {
@@ -16,7 +16,24 @@ export class UserController {
             }
 
             const token = await this.userBusiness.signUp(userInput)
-            res.status(201).send({token: token})
+            res.status(201).send({ token: token })
+
+        } catch (error: any) {
+            res.status(400).send({ error: error.message });
+        }
+    }
+
+    async login(req: Request, res: Response) {
+        try {
+            const { name, password } = req.body;
+
+            const userLogin: userLogin = {
+                name,
+                password
+            }
+            const token = await this.userBusiness.getUserByname(userLogin)
+
+            res.status(200).send({ token: token })
 
         } catch (error: any) {
             res.status(400).send({ error: error.message });

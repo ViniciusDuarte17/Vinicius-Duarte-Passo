@@ -13,6 +13,11 @@ export interface InputDTO {
     password: string
 }
 
+export interface userLogin {
+    name: string;
+    password: string
+}
+
 export const Users = mongoose.model<User | any> ('user', {
     id: String,
     name: String,
