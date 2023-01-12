@@ -1,3 +1,3 @@
-export const primary = '#2da77a'
-export const secondary = '#666'
-export const tertiary = '#1F1F1F'
+export const primary = '#00A2A2'
+export const secondary = '#7A7A7A;'
+export const tertiary = '#161C2D'
