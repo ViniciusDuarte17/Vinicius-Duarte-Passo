@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-export const radomUser = (numberPage: number, setUser: React.Dispatch<React.SetStateAction<never[]>>, setError:React.Dispatch<React.SetStateAction<string>>) => {
+export const radomUser = (numberPage: number, setUser: React.Dispatch<React.SetStateAction<any[]>>, setError:React.Dispatch<React.SetStateAction<string>>) => {
     axios
     .get(`https://randomuser.me/api/?results=${numberPage}`)
     .then( (res) => {

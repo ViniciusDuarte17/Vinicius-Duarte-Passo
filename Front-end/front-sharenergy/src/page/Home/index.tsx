@@ -7,13 +7,18 @@ import { Header } from "../../components/Header";
 import { radomUser } from "../../services/radomUser";
 
 export const Home: React.FC = () => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState<any[]>([]);
     const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(10)
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         radomUser(currentPage, setUser, setError)
     }, [currentPage])
+
+    const updateQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setQuery(event.target.value);
+    };
 
     return (
         <>
@@ -23,9 +28,9 @@ export const Home: React.FC = () => {
             <S.ContentTextField>
                 <TextField
                     fullWidth
-                    placeholder="Restaurante"
-                    // value={query}
-                    // onChange={updateQuery}
+                    placeholder="pesquisar"
+                    value={query}
+                    onChange={updateQuery}
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
@@ -38,7 +43,15 @@ export const Home: React.FC = () => {
             </S.ContentTextField>
             <S.ContentCard>
                 {
-                    user && user.map(user => <CardPage key={user} itemUser={user}/>)
+                    user &&
+                    user
+                        .filter(user =>
+                            user.name.first.toLowerCase().includes(query.toLowerCase()) ||
+                            user.name.last.toLowerCase().includes(query.toLowerCase()) ||
+                            user.login.username.toLowerCase().includes(query.toLowerCase()) ||
+                            user.email.toLowerCase().includes(query.toLowerCase())
+                        )
+                        .map(user => <CardPage key={user} itemUser={user} />)
                 }
             </S.ContentCard>
         </>
