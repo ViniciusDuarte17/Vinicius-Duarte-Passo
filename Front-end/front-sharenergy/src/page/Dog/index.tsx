@@ -1,9 +1,38 @@
-
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Header } from "../../components/Header"
+import { requestDog } from "../../services/requestDog";
+import { CustomDog } from "./components"
+import * as S from "./styled";
 
 
 export const Dog = () => {
+    const [dog, setDog] = useState({});
 
-    return(
-        <>tela dog</>
+    useEffect(() => {
+        requestDog(setDog)
+    }, [])
+
+
+    return (
+        <>
+            <Header>
+                Dog
+            </Header>
+
+            <S.ContentDog>
+                {
+                    <CustomDog dog={dog} />
+                }
+
+            </S.ContentDog>
+            <S.ButtonRefresh>
+                <Button
+                    variant="contained"
+                    onClick={() => requestDog(setDog)}>
+                    refresh
+                </Button>
+            </S.ButtonRefresh>
+        </>
     )
 }
