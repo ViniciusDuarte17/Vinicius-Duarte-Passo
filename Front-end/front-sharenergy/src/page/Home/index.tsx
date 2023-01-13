@@ -5,15 +5,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import { CardPage } from "../../components/Card";
 import { Header } from "../../components/Header";
 import { radomUser } from "../../services/radomUser";
+import { PaginationControlled } from "../../components/Pagination";
 
 export const Home: React.FC = () => {
     const [user, setUser] = useState<any[]>([]);
-    const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(10)
     const [query, setQuery] = useState("");
 
     useEffect(() => {
-        radomUser(currentPage, setUser, setError)
+        radomUser(currentPage, setUser)
     }, [currentPage])
 
     const updateQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +51,12 @@ export const Home: React.FC = () => {
                             user.login.username.toLowerCase().includes(query.toLowerCase()) ||
                             user.email.toLowerCase().includes(query.toLowerCase())
                         )
-                        .map(user => <CardPage key={user} itemUser={user} />)
+                        .map(user => <CardPage key={user.login.uuid} itemUser={user} />)
                 }
             </S.ContentCard>
+            <S.CustomPagination>
+                <PaginationControlled currentPage={currentPage} setCurrentPage={setCurrentPage} user={user} />
+            </S.CustomPagination>
         </>
     )
 }
