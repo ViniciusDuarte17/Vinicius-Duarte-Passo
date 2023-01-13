@@ -5,24 +5,30 @@ import { CardMedia } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import * as S from "./styled";
 
-export const CardPage: React.FC = () => {
+
+interface Props {
+  itemUser: any
+}
+
+export const CardPage = ({ itemUser }: Props) => {
+  
   return (
     <S.Container>
       <Card sx={{ maxWidth: 300 }}>
         <CardMedia
           component="img"
           height="194"
-          image={"https://randomuser.me/api/portraits/women/84.jpg"}
+          image={itemUser.picture.large}
           alt="Logo restaurante"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            <p><strong>userName:</strong> yellowfrog883</p>
+            <p><strong>Nome completo:</strong> {itemUser.name.first} {itemUser.name.last}</p>
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <p><strong>Nome completo:</strong> Mélissa Fleury</p>
-            <p><strong>Idade:</strong> 23 anos</p>
-            <p><strong>Email:</strong> melissa.fleury@example.com</p>
+            <p><strong>username: </strong>{itemUser.login.username}</p>
+            <p><strong>Idade:</strong> {itemUser.dob.age} anos</p>
+            <p><strong>Email:</strong> {itemUser.email}</p>
           </Typography>
         </CardContent>
       </Card>

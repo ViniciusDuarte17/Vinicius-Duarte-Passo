@@ -12,3 +12,10 @@ export const ContentCard = styled.main`
     display: flex;
     flex-wrap: wrap;
 `
+
+export const ContentTextField = styled.div`
+    width: 80%;
+    display: flex;
+    margin: auto;
+    margin-top: 2%;
+`
