@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router"
 import { BrowserRouter } from "react-router-dom"
+import { Cat } from "../page/Cat"
+import { Dog } from "../page/Dog"
 import { Home } from "../page/Home"
 import { LoginPage } from "../page/LoginPage"
 
@@ -11,6 +13,8 @@ export const AppRouter = () => {
             <Routes>
                  <Route path="/" element={<Home />} />
                  <Route path="/login" element={<LoginPage />} />
+                 <Route path="/dog" element={<Dog />} />
+                 <Route path="/cat" element={<Cat />} />
             </Routes>
         </BrowserRouter>
     )

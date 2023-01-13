@@ -6,6 +6,7 @@ import { CardPage } from "../../components/Card";
 import { Header } from "../../components/Header";
 import { radomUser } from "../../services/radomUser";
 import { PaginationControlled } from "../../components/Pagination";
+import { NavBar } from "../../components/NavBar";
 
 export const Home: React.FC = () => {
     const [user, setUser] = useState<any[]>([]);
@@ -25,6 +26,7 @@ export const Home: React.FC = () => {
             <Header>
                 Home
             </Header>
+            <NavBar />
             <S.ContentTextField>
                 <TextField
                     fullWidth

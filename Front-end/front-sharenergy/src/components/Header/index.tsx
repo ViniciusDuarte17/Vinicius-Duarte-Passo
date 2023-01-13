@@ -9,7 +9,7 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
 
 interface HearderChildreen {
-  children: ReactNode
+   children: ReactNode;
 }
 
 export const Header = ({ children }: HearderChildreen) => {
