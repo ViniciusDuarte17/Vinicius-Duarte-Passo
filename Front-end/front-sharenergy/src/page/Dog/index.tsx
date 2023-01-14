@@ -20,10 +20,13 @@ export const Dog = () => {
             <Header>
                 Dog
             </Header>
-                <NavBar />
+            <NavBar />
             <S.ContentDog>
                 {
-                    <CustomDog dog={dog} />
+                    <CustomDog
+                        setDog={setDog}
+                        requestDog={requestDog}
+                        dog={dog} />
                 }
             </S.ContentDog>
             <S.ButtonRefresh>

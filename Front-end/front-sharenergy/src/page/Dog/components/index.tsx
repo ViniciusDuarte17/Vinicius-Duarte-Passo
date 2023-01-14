@@ -10,11 +10,16 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 interface Props {
-    dog: any
+    dog: any;
+    requestDog: any;
+    setDog: React.Dispatch<React.SetStateAction<{}>>
 }
 
-export const CustomDog = ({dog}: Props) => {
-
+export const CustomDog = ({dog, setDog, requestDog}: Props) => {
+    
+    if(dog?.url.includes('.mp4')) {
+        requestDog(setDog)
+    }
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
