@@ -17,7 +17,7 @@ interface Props {
 
 export const CustomDog = ({dog, setDog, requestDog}: Props) => {
     
-    if(dog?.url.includes('.mp4')) {
+    if(dog && dog?.url?.includes('.mp4')) {
         requestDog(setDog)
     }
     return (
