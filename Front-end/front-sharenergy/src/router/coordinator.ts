@@ -15,3 +15,7 @@ export const goToDog = (navigate: NavigateFunction) => {
 export const goToCat = (navigate: NavigateFunction) => {
     navigate("/cat")
 }  
+
+export const goToClient = (navigate: NavigateFunction) => {
+    navigate("/client")
+}  

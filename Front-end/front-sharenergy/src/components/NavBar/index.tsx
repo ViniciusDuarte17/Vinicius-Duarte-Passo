@@ -6,12 +6,14 @@ import HomeIcon from '@mui/icons-material/Home';
 import PetsIcon from '@mui/icons-material/Pets';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { useNavigate } from 'react-router-dom';
-import { goToCat, goToDog, goToHome } from '../../router/coordinator';
+import { goToCat, goToClient, goToDog, goToHome } from '../../router/coordinator';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const actions = [
   { icon: <HomeIcon />, name: 'Home' },
   { icon: <LocalFireDepartmentIcon />, name: 'Cat' },
   { icon: <PetsIcon />, name: 'Dog' },
+  { icon: <AccountCircleIcon />, name: 'Client' },
 ];
 
 export const NavBar = () => {
@@ -20,13 +22,19 @@ export const NavBar = () => {
   const currentPage = (name: string) => {
     switch (name) {
       case 'Home':
-        goToHome(navigate)
+        goToHome(navigate);
         break;
       case 'Cat':
         goToCat(navigate);
         break;
       case 'Dog':
-        goToDog(navigate)
+        goToDog(navigate);
+        break;
+      case 'Client':
+        goToClient(navigate);
+        break;
+      default:
+        goToHome(navigate);
     }
   }
 
