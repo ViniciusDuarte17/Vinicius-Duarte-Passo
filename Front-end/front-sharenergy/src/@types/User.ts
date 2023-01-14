@@ -5,11 +5,11 @@ export interface User {
 }
 
 
-export interface UserRandom {
-    username: string;
-    name: {};
+export interface IClient {
+    id: string;
+    name: string;
     email: string;
-    age: number;
-    first: string;
-    last: string
+    phone: number,
+    address: string,
+    cpf: string
 }
