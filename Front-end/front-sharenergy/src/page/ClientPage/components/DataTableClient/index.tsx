@@ -4,23 +4,30 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { IClient } from '../../../@types/User';
+import { IClient } from '../../../../@types/User';
 import { TableBody } from '@mui/material';
+import Button from '@mui/material/Button';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { requestDeleteClient } from '../../../../services/requestClient';
 
 
 interface Props {
-    client: IClient[]
+    client: IClient[];
+    setClientDelete: React.Dispatch<React.SetStateAction<undefined>>
 }
 
-export const DataTableClient = ({ client }: Props) => {
-    console.log(client)
+export const DataTableClient = ({ client, setClientDelete }: Props) => {
+
+    const deleteClient = (id: string): void => {
+        requestDeleteClient(id, setClientDelete)
+    }
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
-                        {/* <TableCell align="right">Nome</TableCell> */}
                         <TableCell align="right">E-mail</TableCell>
                         <TableCell align="right">Telefone</TableCell>
                         <TableCell align="right">Endereço</TableCell>
@@ -43,8 +50,11 @@ export const DataTableClient = ({ client }: Props) => {
                             <TableCell align="right">{client.address}</TableCell>
                             <TableCell align="right">{client.cpf}</TableCell>
                             <TableCell
-                                onClick={() => console.log(client.id)}
-                                align="right">{"Deletar usuário"}
+                                onClick={() => deleteClient(client.id)}
+                                align="right">
+                                <Button color="error">
+                                  <DeleteForeverRoundedIcon />
+                                </Button>
                             </TableCell>
                         </TableRow>
                     ))}
