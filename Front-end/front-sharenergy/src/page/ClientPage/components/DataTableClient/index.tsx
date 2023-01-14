@@ -13,10 +13,11 @@ import { requestDeleteClient } from '../../../../services/requestClient';
 
 interface Props {
     client: IClient[];
+    errorMessage: string;
     setClientDelete: React.Dispatch<React.SetStateAction<undefined>>
 }
 
-export const DataTableClient = ({ client, setClientDelete }: Props) => {
+export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props) => {
 
     const deleteClient = (id: string): void => {
         requestDeleteClient(id, setClientDelete)
@@ -37,7 +38,7 @@ export const DataTableClient = ({ client, setClientDelete }: Props) => {
                 </TableHead>
 
                 <TableBody>
-                    {client.map((client) => (
+                    { errorMessage === '' ? client && client.map((client) => (
                         <TableRow
                             key={client.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -53,11 +54,13 @@ export const DataTableClient = ({ client, setClientDelete }: Props) => {
                                 onClick={() => deleteClient(client.id)}
                                 align="right">
                                 <Button color="error">
-                                  <DeleteForeverRoundedIcon />
+                                    <DeleteForeverRoundedIcon />
                                 </Button>
                             </TableCell>
                         </TableRow>
-                    ))}
+                    )) : <TableCell component="th" scope="row">
+                        {errorMessage}
+                    </TableCell>}
                 </TableBody>
             </Table>
         </TableContainer>
