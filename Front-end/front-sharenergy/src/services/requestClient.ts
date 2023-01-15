@@ -28,7 +28,7 @@ export const requestAddClient = (
     .post(`http://localhost:3000/client`, body)
     .then((res) => {
       setMessageAddClient(res.data.message)
-      clean
+      clean()
     })
     .catch((err) => {
       setErrorCreateClient(err.data.message)
