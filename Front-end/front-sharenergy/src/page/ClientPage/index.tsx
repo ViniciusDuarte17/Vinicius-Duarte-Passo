@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { IClient } from "../../@types/User";
 import { Header } from "../../components/Header";
+import { NavBar } from "../../components/NavBar";
 import { useForm } from "../../hooks/useForm";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { requestAddClient, requestClient } from "../../services/requestClient";
@@ -47,6 +48,7 @@ export const ClientPage = () => {
             <Header>
                 Client
             </Header>
+            <NavBar />
             <S.ContentClient>
                 <DataTableClient
                     errorMessage={errorMessage}
