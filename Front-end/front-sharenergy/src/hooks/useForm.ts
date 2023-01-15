@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { User } from "../@types/User";
 
 
 
-export const useForm = (initialState: User) => {
+export const useForm = (initialState: any) => {
     const [form, setForm] = useState(initialState);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

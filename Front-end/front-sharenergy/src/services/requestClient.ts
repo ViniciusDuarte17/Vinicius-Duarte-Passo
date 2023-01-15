@@ -4,7 +4,6 @@ import { IClient } from "../@types/User"
 
 export const requestClient = (
   setClient: React.Dispatch<React.SetStateAction<IClient[]>>,
-  setClientDelete: React.Dispatch<React.SetStateAction<undefined>>,
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>
 ) => {
 
@@ -12,10 +11,27 @@ export const requestClient = (
     .get(`http://localhost:3000/client`)
     .then((res) => {
       setClient(res.data)
-      setClientDelete(res.data)
     })
     .catch((err) => {
       setErrorMessage(err.response.data.error)
+    })
+}
+
+export const requestAddClient = (
+  body: IClient,
+  setMessageAddClient: React.Dispatch<React.SetStateAction<string>>,
+  setErrorCreateClient: React.Dispatch<React.SetStateAction<string>>,
+  clean: () => void
+) => {
+
+  axios
+    .post(`http://localhost:3000/client`, body)
+    .then((res) => {
+      setMessageAddClient(res.data.message)
+      clean
+    })
+    .catch((err) => {
+      setErrorCreateClient(err.data.message)
     })
 }
 
