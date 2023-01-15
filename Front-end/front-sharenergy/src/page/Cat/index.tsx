@@ -5,9 +5,11 @@ import { InputAdornment, TextField } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import { useEffect, useState } from "react";
 import { requestCat } from "../../services/requestCat";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 
 export const Cat = () => {
+    useProtectedPage()
     const [search, setSearch] = useState('404');
     const [cat, setCat] = useState(null);
 

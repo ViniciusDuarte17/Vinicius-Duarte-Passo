@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm } from "../../hooks/useForm";
+import { registerLogin } from "../../services/registerLogin";
 
 export const LoginForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false); 
@@ -12,6 +13,7 @@ export const LoginForm: React.FC = () => {
 
     const onSubmitForm = (e: React.ChangeEvent<HTMLInputElement> | any): void => {
         e.preventDefault();
+        registerLogin(form)
         console.log(form)
     }
 

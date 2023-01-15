@@ -7,8 +7,10 @@ import { Header } from "../../components/Header";
 import { radomUser } from "../../services/radomUser";
 import { PaginationControlled } from "../../components/Pagination";
 import { NavBar } from "../../components/NavBar";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 export const Home: React.FC = () => {
+    useProtectedPage()
     const [user, setUser] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(10)
     const [query, setQuery] = useState("");

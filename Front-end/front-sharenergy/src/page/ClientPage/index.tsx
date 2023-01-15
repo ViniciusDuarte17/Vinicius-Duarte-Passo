@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IClient } from "../../@types/User";
 import { Header } from "../../components/Header";
 import { useForm } from "../../hooks/useForm";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { requestAddClient, requestClient } from "../../services/requestClient";
 import { ClientForm } from "./components/ClientForm";
 import { DataTableClient } from "./components/DataTableClient";
@@ -11,6 +12,7 @@ import * as S from "./styled";
 
 
 export const ClientPage = () => {
+    useProtectedPage()
     const [client, setClient] = useState<IClient[]>([]);
     const [clientDelete, setClientDelete] = useState();
     const [errorMessage, setErrorMessage] = useState('');

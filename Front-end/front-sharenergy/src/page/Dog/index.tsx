@@ -2,12 +2,14 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header"
 import { NavBar } from "../../components/NavBar";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { requestDog } from "../../services/requestDog";
 import { CustomDog } from "./components"
 import * as S from "./styled";
 
 
 export const Dog = () => {
+    useProtectedPage()
     const [dog, setDog] = useState({});
 
     useEffect(() => {
