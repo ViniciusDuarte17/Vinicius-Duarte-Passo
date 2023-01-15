@@ -30,7 +30,6 @@ export const ClientPage = () => {
         cpf: ""
     });
 
-    console.log(messageAddClient)
 
     useEffect(() => {
         requestClient(setClient, setErrorMessage);
@@ -40,7 +39,6 @@ export const ClientPage = () => {
         e.preventDefault();
         setMessageAddClient('')
         requestAddClient(form, setMessageAddClient , setErrorCreateClient, clean);
-        clean;
     }
 
     return (

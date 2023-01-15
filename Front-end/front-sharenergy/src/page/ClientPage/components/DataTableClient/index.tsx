@@ -9,6 +9,7 @@ import { TableBody } from '@mui/material';
 import Button from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { requestDeleteClient } from '../../../../services/requestClient';
+import { useEffect, useState } from 'react';
 
 
 interface Props {
@@ -19,7 +20,12 @@ interface Props {
 
 export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props) => {
 
-    const deleteClient = (id: string): void => {
+    const deleteClient = (id: string) => {
+        
+        if (client.length - 1 <= 0) {
+            alert("Todos clientes foram deletados")
+            window.location.reload()
+        }
         requestDeleteClient(id, setClientDelete)
     }
 
@@ -36,9 +42,8 @@ export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props
                         <TableCell align="right">Delete</TableCell>
                     </TableRow>
                 </TableHead>
-
                 <TableBody>
-                    { errorMessage === '' ? client && client.map((client) => (
+                    {client.length  > 0 ? client && client.map((client) => (
                         <TableRow
                             key={client.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

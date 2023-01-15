@@ -4,11 +4,11 @@ import * as S from "./styled";
 
 interface Props {
     form: any,
-    onChange:   (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmitClientForm: (e: React.ChangeEvent<HTMLInputElement> | any) => void;
 }
 
-export const ClientForm = ({form, onChange, onSubmitClientForm}: Props) => {
+export const ClientForm = ({ form, onChange, onSubmitClientForm }: Props) => {
 
     return (
         <S.Container>
@@ -21,6 +21,8 @@ export const ClientForm = ({form, onChange, onSubmitClientForm}: Props) => {
                     label={"nome"}
                     required
                     type={'text'}
+                    inputProps={{ pattern: '^.{3,}' }}
+                    title={"Deve conter no mímino 3 letras"}
                 />
                 <TextField
                     name="email"
@@ -30,6 +32,7 @@ export const ClientForm = ({form, onChange, onSubmitClientForm}: Props) => {
                     label={"E-mail"}
                     required
                     type={'email'}
+                    title={"Compo obrigatório"}
                 />
                 <TextField
                     name="phone"
@@ -56,7 +59,6 @@ export const ClientForm = ({form, onChange, onSubmitClientForm}: Props) => {
                     margin="normal"
                     label={"CPF"}
                     required
-                    type={'text'}
                 />
                 <Button
                     variant="contained"
