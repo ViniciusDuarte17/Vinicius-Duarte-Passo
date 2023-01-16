@@ -32,6 +32,7 @@ export const requestAddClient = (
     })
     .catch((err) => {
       setErrorCreateClient(err.data.message)
+      console.log(err)
     })
 }
 

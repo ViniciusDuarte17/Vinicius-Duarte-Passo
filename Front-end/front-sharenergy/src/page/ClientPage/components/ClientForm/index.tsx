@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const ClientForm = ({ form, onChange, onSubmitClientForm }: Props) => {
-
+    
     return (
         <S.Container>
             <S.ContentForm onSubmit={onSubmitClientForm}>
