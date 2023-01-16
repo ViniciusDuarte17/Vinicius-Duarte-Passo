@@ -31,12 +31,13 @@ POST http://localhost:3000/client
 Content-Type: application/json
 
 {
-    "name": "vinicius",
-    "email": "vinicius@gmail.com",
-    "phone": 74999558050,
-    "address": "Rua palmeiras",
-    "cpf":"45678959371"
+    "name": "Vitor",
+    "email": "Vitor@gmail.com",
+    "phone": 74999848225,
+    "address": "rua sete",
+    "cpf":"21545515121"
 }
+
 ###
 
 PATCH http://localhost:3000/client/b9aa3a33-582f-4eda-86dc-0971e812322e

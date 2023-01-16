@@ -2,6 +2,7 @@ import { BaseError } from "../error/BaseError";
 import { IClient, IClientDTO } from "../model/client";
 import { IIDGenerator } from "../ports/Ports";
 import { IClientRepository } from "../repository/IClientRepository";
+import { RetiraMascara } from "../services/removeMascaraCpf";
 
 
 export class ClientBusiness {
@@ -15,6 +16,15 @@ export class ClientBusiness {
 
         if (!name || !email || !phone || !address || !cpf) {
             throw new BaseError("É necessário preencher todos os compos", 422);
+        }
+        
+        const newCpf =  RetiraMascara(cpf) && RetiraMascara(cpf)
+     
+        if(newCpf && newCpf?.length <= 10 || newCpf &&  newCpf?.length >= 12) {
+            throw new BaseError("Esse campo precisa ter 11 caracteres", 401);
+        }
+        if( cpf?.length <= 10 || cpf.length >= 12) {
+            throw new BaseError("Esse campo precisa ter 11 caracteres", 401);
         }
 
         const id = this.idGenerator.generate()
