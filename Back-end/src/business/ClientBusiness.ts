@@ -23,9 +23,6 @@ export class ClientBusiness {
         if(newCpf && newCpf?.length <= 10 || newCpf &&  newCpf?.length >= 12) {
             throw new BaseError("Esse campo precisa ter 11 caracteres", 401);
         }
-        if( cpf?.length <= 10 || cpf.length >= 12) {
-            throw new BaseError("Esse campo precisa ter 11 caracteres", 401);
-        }
 
         const id = this.idGenerator.generate()
 
