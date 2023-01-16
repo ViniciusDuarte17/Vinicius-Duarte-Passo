@@ -9,12 +9,18 @@ import { registerLogin } from "../../services/registerLogin";
 
 export const LoginForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false); 
-    const { form, onChange, clean } = useForm({ name: "", password: "" }); 
+    let { form, onChange, clean } = useForm({ name: "", password: "" }); 
 
     const onSubmitForm = (e: React.ChangeEvent<HTMLInputElement> | any): void => {
         e.preventDefault();
         registerLogin(form)
-        console.log(form)
+        localStorage.setItem('username', form.name)
+        clean();
+    }
+    const rememberMe = localStorage.getItem('username')
+    
+    if(rememberMe !== null) {
+        form.name = rememberMe
     }
 
     return (
