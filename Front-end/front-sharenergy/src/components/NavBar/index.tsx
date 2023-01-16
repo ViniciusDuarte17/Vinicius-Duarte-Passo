@@ -6,14 +6,16 @@ import HomeIcon from '@mui/icons-material/Home';
 import PetsIcon from '@mui/icons-material/Pets';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { useNavigate } from 'react-router-dom';
-import { goToCat, goToClient, goToDog, goToHome } from '../../router/coordinator';
+import { goToCat, goToClient, goToDog, goToHome, goToLogin } from '../../router/coordinator';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const actions = [
   { icon: <HomeIcon />, name: 'Home' },
   { icon: <LocalFireDepartmentIcon />, name: 'Cat' },
   { icon: <PetsIcon />, name: 'Dog' },
   { icon: <AccountCircleIcon />, name: 'Client' },
+  { icon: <LogoutIcon />, name: 'Logout' },
 ];
 
 export const NavBar = () => {
@@ -32,6 +34,10 @@ export const NavBar = () => {
         break;
       case 'Client':
         goToClient(navigate);
+        break;
+      case 'Logout':
+        localStorage.removeItem('token')
+        goToLogin(navigate);
         break;
       default:
         goToHome(navigate);
