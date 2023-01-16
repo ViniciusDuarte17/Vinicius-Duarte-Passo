@@ -9,11 +9,14 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+interface Props {
+    search: string
+}
 
+export const CustomCard = ({ search }: Props) => {
 
-export const CustomCard = () => {
-
-
+    const img = `https://http.cat/${Number(search)}`
+    
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
@@ -28,7 +31,7 @@ export const CustomCard = () => {
                 <CardMedia
                     component="img"
                     height="194"
-                    image="https://randomuser.me/api/portraits/women/34.jpg"
+                    image={img}
                     alt="Paella dish"
                 />
                 <CardContent>

@@ -3,17 +3,14 @@ import { Header } from "../../components/Header"
 import { CustomCard } from "./components/CustomCard"
 import { InputAdornment, TextField } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
-import { useEffect, useState } from "react";
-import { requestCat } from "../../services/requestCat";
+import {  useState } from "react";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { NavBar } from "../../components/NavBar";
 
 
 export const Cat = () => {
     useProtectedPage()
-    const [search, setSearch] = useState('404');
-    const [cat, setCat] = useState(null);
-
-        requestCat(404)
+    const [search, setSearch] = useState('');
 
     const updateSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
@@ -24,6 +21,7 @@ export const Cat = () => {
             <Header >
                 Cat
             </Header>
+            <NavBar />
             <S.ContentTextField>
                 <TextField
                     fullWidth
@@ -41,7 +39,7 @@ export const Cat = () => {
                 />
             </S.ContentTextField>
             <S.ContentCat>
-                <CustomCard />
+                <CustomCard search={search} />
             </S.ContentCat>
         </>
     )
