@@ -5,6 +5,7 @@ import { ClientPage } from "../page/ClientPage"
 import { Dog } from "../page/Dog"
 import { Home } from "../page/Home"
 import { LoginPage } from "../page/LoginPage"
+import { SingUpPage } from "../page/SingUp"
 
 
 export const AppRouter = () => {
@@ -14,6 +15,7 @@ export const AppRouter = () => {
             <Routes>
                  <Route path="/" element={<Home />} />
                  <Route path="/login" element={<LoginPage />} />
+                 <Route path="/inscreve-se" element={<SingUpPage />} />
                  <Route path="/dog" element={<Dog />} />
                  <Route path="/cat" element={<Cat />} />
                  <Route path="/client" element={<ClientPage />} />

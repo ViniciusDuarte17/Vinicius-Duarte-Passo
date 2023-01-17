@@ -5,9 +5,12 @@ import { LoginForm } from "./LoginForm";
 import Logo from "../../assets/dog3.jpg";
 import { Button } from "@mui/material";
 import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+import { goToSingUp } from "../../router/coordinator";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
     useUnprotectedPage()
+    const navigate = useNavigate()
     return (
         <>
             <Header>
@@ -17,6 +20,7 @@ export const LoginPage: React.FC = () => {
             <LoginForm />
             <S.ContentButtonSignup>
                 <Button
+                   onClick={() => goToSingUp(navigate)} 
                    fullWidth 
                 >
                     Não possui cadastro ? Clique aqui.

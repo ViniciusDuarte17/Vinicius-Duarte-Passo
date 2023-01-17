@@ -1,34 +1,46 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as S from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm } from "../../hooks/useForm";
-import { registerLogin } from "../../services/registerLogin";
+import { registerSingUp } from "../../services/registerSingUp";
 
-export const LoginForm: React.FC = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const { form, onChange, clean } = useForm({ name: "", password: "" });
+
+export const SingUpForm: React.FC = () => {
+    const [showPassword, setShowPassword] = useState(false); 
+    let { form, onChange, clean } = useForm({ name: "", email: "", password: "" }); 
+
     const onSubmitForm = (e: React.ChangeEvent<HTMLInputElement> | any): void => {
         e.preventDefault();
-        registerLogin(form)
+        registerSingUp(form)
         localStorage.setItem('username', form.name)
-        clean();
+        clean()
     }
     
     return (
-        <S.ContainerLogin>
-            <S.LoginForm onSubmit={onSubmitForm}>
+        <S.ContainerSingUp>
+            <S.StyledSingUpForm onSubmit={onSubmitForm}>
                 <TextField
                     name="name"
-                    value={ form.name}
+                    value={form.name}
                     onChange={onChange}
                     label={"Nome do usuário"}
                     margin="normal"
                     fullWidth
                     required
                     type={'text'}
+                />
+                <TextField
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
+                    label={"E-mail"}
+                    margin="normal"
+                    fullWidth
+                    required
+                    type={'email'}
                 />
                 <FormControl margin="normal" fullWidth >
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -61,7 +73,7 @@ export const LoginForm: React.FC = () => {
                 >
                     Entrar
                 </Button>
-            </S.LoginForm>
-        </S.ContainerLogin>
+            </S.StyledSingUpForm>
+        </S.ContainerSingUp>
     )
 }
