@@ -9,6 +9,8 @@ import { TableBody } from '@mui/material';
 import Button from '@mui/material/Button';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { requestDeleteClient } from '../../../../services/requestClient';
+import { useNavigate } from 'react-router-dom';
+import { goToUpdateClient } from '../../../../router/coordinator';
 
 
 
@@ -19,9 +21,10 @@ interface Props {
 }
 
 export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props) => {
+    const navigate = useNavigate();
 
     const deleteClient = (id: string) => {
-        
+
         if (client.length - 1 <= 0) {
             alert("Todos clientes foram deletados")
             window.location.reload()
@@ -39,11 +42,12 @@ export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props
                         <TableCell align="right">Telefone</TableCell>
                         <TableCell align="right">Endereço</TableCell>
                         <TableCell align="right">CPF</TableCell>
-                        <TableCell align="right">Delete</TableCell>
+                        <TableCell align="right"> Atualizar Cliente </TableCell>
+                        <TableCell align="right">Delete Cliente</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {client.length  > 0 ? client && client.map((client) => (
+                    {client.length > 0 ? client && client.map((client) => (
                         <TableRow
                             key={client.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -55,6 +59,15 @@ export const DataTableClient = ({ client, setClientDelete, errorMessage }: Props
                             <TableCell align="right">{client.phone}</TableCell>
                             <TableCell align="right">{client.address}</TableCell>
                             <TableCell align="right">{client.cpf}</TableCell>
+                            <TableCell align="right">
+                                <Button
+                                    onClick={ () => goToUpdateClient(navigate, client.id)}
+                                    variant='outlined'
+                                    color='success'
+                                >
+                                    Atualizar
+                                </Button>
+                            </TableCell>
                             <TableCell
                                 onClick={() => deleteClient(client.id)}
                                 align="right">

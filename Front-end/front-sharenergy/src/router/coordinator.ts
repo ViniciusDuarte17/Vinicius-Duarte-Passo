@@ -23,3 +23,7 @@ export const goToCat = (navigate: NavigateFunction) => {
 export const goToClient = (navigate: NavigateFunction) => {
     navigate("/client")
 }  
+
+export const goToUpdateClient = (navigate: NavigateFunction, id: string) => {
+    navigate(`/update-client/${id}`)
+} 

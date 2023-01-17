@@ -1,5 +1,7 @@
 import axios from "axios"
+import { NavigateFunction } from "react-router-dom"
 import { IClient } from "../@types/User"
+import { goToClient } from "../router/coordinator"
 
 
 export const requestClient = (
@@ -33,6 +35,23 @@ export const requestAddClient = (
     .catch((err) => {
       setErrorCreateClient(err.data.message)
       console.log(err)
+    })
+}
+
+export const requestUpdateClient = (
+  id: string,
+  body: IClient,
+  navigate: NavigateFunction
+) => {
+
+  axios
+    .patch(`http://localhost:3000/client/${id}`, body)
+    .then((res) => {
+      alert(res.data.message)
+      goToClient(navigate)
+    })
+    .catch((err) => {
+      alert(err.response.data.error)
     })
 }
 
