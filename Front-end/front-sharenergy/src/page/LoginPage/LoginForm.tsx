@@ -16,13 +16,19 @@ export const LoginForm: React.FC = () => {
         e.preventDefault();
         registerLogin(form)
         localStorage.setItem('username', form.name)
+        localStorage.setItem('password', form.password)
         clean();
     }
 
     const handleRememberMe = (value: boolean) => {
         setActive(value)
-        const rememberMe = localStorage.getItem('username')
-        value === true ? form.name = rememberMe : form.name = form.name
+        const rememberMe = {
+            username: localStorage.getItem('username'),
+            password: localStorage.getItem('password')
+        }
+        value === true ? form.name = rememberMe.username : form.name = form.name
+
+        value === true ? form.password = rememberMe.password : form.password = form.password
     }
 
     return (
