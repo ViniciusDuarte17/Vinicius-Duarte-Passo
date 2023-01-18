@@ -34,24 +34,26 @@ export const requestAddClient = (
     })
     .catch((err) => {
       setErrorCreateClient(err.data.message)
-      console.log(err)
     })
 }
 
 export const requestUpdateClient = (
   id: string,
   body: IClient,
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
+  setAlertSuccess: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-
+  setAlertSuccess(true)
   axios
     .patch(`http://localhost:3000/client/${id}`, body)
     .then((res) => {
       alert(res.data.message)
+      setAlertSuccess(false)
       goToClient(navigate)
     })
     .catch((err) => {
       alert(err.response.data.error)
+      setAlertSuccess(false)
     })
 }
 
