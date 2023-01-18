@@ -8,9 +8,9 @@
 após o primeiro acesso o usuário consegue logar automáticamente utilizando o botão de ```Relembre-me.```
 
 * Após login o usuário é capaz de visualizar uma listagem de usuários gerada a partir da api 
-```[Random User Generator](https://randomuser.me/).``` ademais o usuário pode utilizar o compo de pesquisa para fazer busca por nome, email ou username e pode paginar os dados.
+[Random User Generator](https://randomuser.me/). Ademais o usuário pode utilizar o compo de pesquisa para fazer busca por nome, email ou username e pode paginar os dados.
 
-* O usuário pode navegar na aplicação para a tela ```dog``` com botão refresh que, ao ser clicado, gera uma imagem aleatória de um novo cachorro da api `[Random Dog](https://random.dog/)`. Pode ir para tela `cat` podendo selecionar o status code http qualquer, e trazendo uma imagem da api `[HTTP Cat](https://http.cat/)` relacionada ao status escolhido. Por fim a página de clientes, contem uma lista de cliente sendo capaz de criar novos clientes, deletar cliente, atualizar cliente específico.
+* O usuário pode navegar na aplicação para a tela ```dog``` com botão refresh que, ao ser clicado, gera uma imagem aleatória de um novo cachorro da api [Random Dog](https://random.dog/). Pode ir para tela `cat` podendo selecionar o status code http qualquer, e trazendo uma imagem da api [HTTP Cat](https://http.cat/) relacionada ao status escolhido. Por fim a página de clientes, contem uma lista de cliente sendo capaz de criar novos clientes, deletar cliente, atualizar cliente específico.
 
 
 <h2> 🛠 Tecnologias front-end </h2>
