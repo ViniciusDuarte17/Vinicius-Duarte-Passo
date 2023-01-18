@@ -1,0 +1,4 @@
+JWT_KEY = bananinha
+ACCESS_TOKEN_EXPIRES_IN = 10min
+DB_USER = ""
+DB_PASSWORD = ""
