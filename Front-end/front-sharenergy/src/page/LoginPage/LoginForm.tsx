@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import * as S from "./styled";
 import TextField from "@mui/material/TextField";
-import { Button, Checkbox, FormControl, FormControlLabel, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
+import { Button, Checkbox, CircularProgress, FormControl, FormControlLabel, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm } from "../../hooks/useForm";
 import { registerLogin } from "../../services/registerLogin";
@@ -11,10 +11,11 @@ export const LoginForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { form, onChange, clean } = useForm({ name: "", password: "" });
     const [active, setActive] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitForm = (e: React.ChangeEvent<HTMLInputElement> | any): void => {
         e.preventDefault();
-        registerLogin(form)
+        registerLogin(form, setIsLoading);
         localStorage.setItem('username', form.name)
         localStorage.setItem('password', form.password)
         clean();
@@ -80,7 +81,7 @@ export const LoginForm: React.FC = () => {
                     fullWidth
                     type="submit"
                 >
-                    Entrar
+                   {isLoading ? <CircularProgress color={"inherit"} size={28} /> : 'Login'  }
                 </Button>
             </S.LoginForm>
         </S.ContainerLogin>
