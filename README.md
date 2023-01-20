@@ -66,3 +66,6 @@ npm run dev
 ``` 
 
 OBS: IMPORTANTE `criar um arquivo .env com as variáveis JWT_KEY = valor, ACCESS_TOKEN_EXPIRES_IN = escolha por quantos minutos ou horas o token expira, DB_USER = com seu usuário do momgoDB, DB_PASSWORD = com sua senha do momgoDB`.
+
+
+### [Link do video no youtube](https://youtu.be/JgRGLAdhYtE)
